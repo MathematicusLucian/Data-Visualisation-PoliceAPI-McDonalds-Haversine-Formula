@@ -1,6 +1,9 @@
 # McYobbo
 Using Police API and McDonald's store location data, to see if level of anti-social "yobbo" crime is higher in the vicinity of a MackyD venue
 
+### Haversine formula   
+To calculate distance between crime locations and McDonalds' stores. I calculate the great-circle distance between two points – that is, the shortest distance over the earth’s surface – giving an ‘as-the-crow-flies’ distance between the points (ignoring any hills they fly over).
+
 ### Police API
 Polygon set for the crime data request to Police API: that is South London, i.e. Lambeth, Peckham, Greenwich.   
 <code>

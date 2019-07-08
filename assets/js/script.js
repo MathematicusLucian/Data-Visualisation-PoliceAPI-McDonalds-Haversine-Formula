@@ -1,6 +1,30 @@
 //To override CORS:
 //open -a Google\ Chrome --args --disable-web-security --user-data-dir
 
+// Converts from degrees to radians.
+Math.radians = function(degrees) {
+  return degrees * Math.PI / 180;
+};
+
+function getDistanceHaversine(lat1,lon1,lat2,lon2) {
+
+	var R = 6371e3; // metres
+	var Phi1 = Math.radians(lat1);
+	var Phi2 = Math.radians(lat2);
+	var DeltaPhi = Math.radians(lat2-lat1);
+	var DeltaLambda = Math.radians(lon2-lon1);
+
+	var a = Math.sin(DeltaPhi/2) * Math.sin(DeltaPhi/2) +
+	        Math.cos(Phi1) * Math.cos(Phi2) *
+	        Math.sin(DeltaLambda/2) * Math.sin(DeltaLambda/2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+	var d = R * c;
+
+	return d;
+
+}
+
 $( document ).ready(function() {
 
 	var macky_stores = [ 
@@ -28,7 +52,6 @@ $( document ).ready(function() {
 		[51.50877,-0.12445], 
 		[51.49645,-0.14107]
 	];
-	console.log(macky_stores);
 
 	var bottom_lat = 51.45;
 	var top_lat = 51.51;
@@ -55,7 +78,7 @@ $( document ).ready(function() {
 	    fillOpacity: 0.1
 	}).addTo(mymap);
 
-	$( ".result" ).html( "Let's get some data!" ); 
+	$( ".result" ).html( "<h3>Please wait - getting you some data!</h3><hr>" ); 
 
 	$.get( "https://data.police.uk/api/crimes-street/anti-social-behaviour?poly="
 		+ bottom_lat
@@ -83,21 +106,38 @@ $( document ).ready(function() {
 	  $.each(data, function(i, item) {
 	  	  //var marker = L.marker([data[i].location.latitude, data[i].location.longitude]).addTo(mymap);
 
-		  $( ".result" ).append(
-		  	"<p>id: " + data[i].id 
-	    		+ ", latitude: " + data[i].location.latitude
-	    		+ ", longitude: " + data[i].location.longitude 
-	    		+ "</p>"
-		  ); 
-    	  j = i; 
-	  }); 
-	   
-	  /*$.each(data, function(i, item) {
-    	console.log( "id: " + data[i].id 
+		  /* console.log( "id: " + data[i].id 
     		+ ", latitude: " + data[i].location.latitude
     		+ ", longitude: " + data[i].location.longitude
-    		); 
-	  });*/
+    		); */
+
+	  	  var shortest_distance = 0;
+
+		  for(var i = 0; i < macky_stores.length; i++) {
+
+		  	var this_distance = getDistanceHaversine(data[i].location.latitude,data[i].location.longitude,macky_stores[i][0],macky_stores[i][1]);
+
+		  	if((i == 0)||(this_distance < shortest_distance)){
+		  		shortest_distance = this_distance;
+		  	}
+
+		  }
+
+		  $( ".result" ).append(
+		  	"<p>id: " + data[i].id  
+	    		+ "</p>"
+	    		+ "<p>"
+	    		+ "latitude: " + data[i].location.latitude
+	    		+ ", longitude: " + data[i].location.longitude 
+	    		+ "</p>"
+	    		+ "<p>"
+	    		+ "McDonalds: " + shortest_distance + "m"
+	    		+ "</p><hr>"
+		  ); 
+
+    	  j = i; 
+	  });  
+
 	  console.log("Count: " +j)
 	
 	})
