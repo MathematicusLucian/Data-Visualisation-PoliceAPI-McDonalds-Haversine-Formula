@@ -128,7 +128,7 @@ $( document ).ready(function() {
 
 		  	$( ".result" ).append(
 			  	"<p>"
-	    		+ i + ": " + this_distance + "m"
+	    		+ k + ": " + this_distance + "m"
 	    		+ "</p>"
 			  ); 
 
