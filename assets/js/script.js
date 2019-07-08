@@ -101,10 +101,17 @@ $( document ).ready(function() {
 
 	  console.log( "Load was performed." );
 
+	  $( "#count_total" ).html( data.length );
+
 	  $( ".result" ).html("");
+	  
 	  var j = 0;
+	  var graphData = [];
+
 	  $.each(data, function(i, item) {
 	  	  //var marker = L.marker([data[i].location.latitude, data[i].location.longitude]).addTo(mymap);
+
+		  $( "#count_current" ).html( i );
 
 		  $( ".result" ).append(
 		  	"<p>id: " + data[i].id  
@@ -115,10 +122,10 @@ $( document ).ready(function() {
     		+ "</p>"
 		  ); 
 
-		  console.log( "id: " + data[i].id 
+		  /* console.log( "id: " + data[i].id 
     		+ ", latitude: " + data[i].location.latitude
     		+ ", longitude: " + data[i].location.longitude
-    	  ); 
+    	  ); */
 
 	  	  var shortest_distance = 0;
 
@@ -144,13 +151,81 @@ $( document ).ready(function() {
     		+ "</p><hr>"
 		  ); 
 
+		  graphData[i] = [i ,shortest_distance];
+
 		  console.log(shortest_distance);
-		  console.log(" ");
+		  //console.log(" ");
 
     	  j = i; 
 	  });  
 
 	  console.log("Count: " +j)
+
+	  Highcharts.chart('container', {
+		  chart: {
+		    type: 'scatter',
+		    zoomType: 'xy'
+		  },
+		  title: {
+		    text: 'Distance of McDonalds from Anti-Social Crime Incidents in South London'
+		  },
+		  subtitle: {
+		    text: 'Source: Police API; McDonalds Store Addresses; k1n4kut4 analysis'
+		  },
+		  xAxis: {
+		    title: {
+		      enabled: true,
+		      text: 'Anti-Social Incident (id)'
+		    },
+		    startOnTick: true,
+		    endOnTick: true,
+		    showLastLabel: true
+		  },
+		  yAxis: {
+		    title: {
+		      text: 'Distance to Nearest McDonalds (m)'
+		    }
+		  },
+		  legend: {
+		    layout: 'vertical',
+		    align: 'left',
+		    verticalAlign: 'top',
+		    x: 100,
+		    y: 70,
+		    floating: true,
+		    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+		    borderWidth: 1
+		  },
+		  plotOptions: {
+		    scatter: {
+		      marker: {
+		        radius: 5,
+		        states: {
+		          hover: {
+		            enabled: true,
+		            lineColor: 'rgb(100,100,100)'
+		          }
+		        }
+		      },
+		      states: {
+		        hover: {
+		          marker: {
+		            enabled: false
+		          }
+		        }
+		      },
+		      tooltip: {
+		        headerFormat: '<b>{series.name}</b><br>',
+		        pointFormat: '{point.x} id, {point.y} m'
+		      }
+		    }
+		  },
+		  series: [{
+		    name: 'k1n4ku4 data analysis',
+		    color: 'rgba(223, 83, 83, .5)',
+		    data: graphData
+		  }]
+	  });
 	
 	})
     .fail(function(xhr, textStatus, errorThrown) {
