@@ -3,12 +3,12 @@
 
 $( document ).ready(function() {
 
-	var left_lat = 51.4;
-	var right_lat = 51.6;
-	var left_long = -0.35;
-	var right_long = 0.15;
+	var bottom_lat = 51.45;
+	var top_lat = 51.51;
+	var left_long = -0.15;
+	var right_long = 0.02;
 
-	var mymap = L.map('mapid').setView([(left_lat+right_lat)/2, (left_long+right_long)/2], 11);
+	var mymap = L.map('mapid').setView([(bottom_lat+top_lat)/2, (left_long+right_long)/2], 12);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token='+mapbox_access_token, {
 	    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -18,10 +18,10 @@ $( document ).ready(function() {
 	}).addTo(mymap);
 
 	var polygon = L.polygon([
-	    [left_lat, left_long ],
-	    [left_lat, right_long],
-	    [right_lat, right_long],
-	    [right_lat, left_long]
+	    [bottom_lat, left_long ],
+	    [bottom_lat, right_long],
+	    [top_lat, right_long],
+	    [top_lat, left_long]
 	], {
 	    color: 'red',
 	    fillColor: '#f03',
@@ -30,22 +30,41 @@ $( document ).ready(function() {
 
 	$( ".result" ).html( "Let's get some data!" );
 
+	//https://data.police.uk/api/crimes-street/anti-social-behaviour?poly=51.275,0.35:51.6,-0.35:51.275,-0.35:51.6,0.35&date=2017-01
+	/* console.log("https://data.police.uk/api/crimes-street/anti-social-behaviour?poly="
+		+ left_lat
+		+ "," 
+		+ left_long
+		+ ":"
+		+ left_lat
+		+ "," 
+		+ right_long 
+		+":"
+		+ right_lat
+		+ ","
+		+ right_long 
+		+ ":"
+		+ right_lat
+		+ ","
+		+ left_long
+		+ "&date=2017-01"); */
+
 	$.get( "https://data.police.uk/api/crimes-street/anti-social-behaviour?poly="
-		+ left_lat
+		+ bottom_lat
 		+ "," 
-		+ right_long
+		+ left_long
 		+ ":"
-		+ right_lat
+		+ bottom_lat
 		+ "," 
-		+ left_long 
-		+" :"
-		+ left_lat
+		+ right_long 
+		+":"
+		+ top_lat
 		+ ","
-		+ left_long 
-		+ ":"
-		+ right_lat
-		+ ","
-		+ right_long
+		+ right_long 
+		//+ ":"
+		//+ top_lat
+		//+ ","
+		//+ left_long
 		+ "&date=2017-01", 
 	function( data ){
 
@@ -53,6 +72,8 @@ $( document ).ready(function() {
 
 	  $( ".result" ).html("");
 	  $.each(data, function(i, item) {
+	  	  //var marker = L.marker([data[i].location.latitude, data[i].location.longitude]).addTo(mymap);
+
 		  $( ".result" ).append(
 		  	"<p>id: " + data[i].id 
 	    		+ ", latitude: " + data[i].location.latitude
