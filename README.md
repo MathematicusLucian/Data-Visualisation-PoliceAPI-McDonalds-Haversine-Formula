@@ -3,7 +3,7 @@ Accessing the Police API and McDonald's store location data, to use the Haversin
 
 ### Graph Generated / Hypothesis Correct?   
 
-Crime is clearly higher when within 2 miles of a McDonalds, but there is a MackShack within a mile of almost anywhere in Londonium. The correlation is weak due to many outliers, and in fact, when in the vicinity of store, that is under a mile, the crime rate is lower.  
+Crime is clearly higher when within 2 miles of a McDonalds, but there is a MackShack within approx said distance almost anywhere in Londonium. The correlation is weak due to many outliers, and in fact, when in the vicinity of store, that is under a mile, the crime rate is lower.  
 
 ![graph](./assets/img/distance-of-mcdonalds-fr.png)   
 
