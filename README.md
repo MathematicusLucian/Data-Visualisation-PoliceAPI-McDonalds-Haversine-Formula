@@ -1,11 +1,11 @@
 # McYobbo
 Accessing the Police API and McDonald's store location data, to use the Haversine formula, to see if level of anti-social "yobbo" crime is higher in the vicinity of a MackyD venue
 
-### Graph Generated / Hypothesis Correct?  
-
-![graph](./assets/img/distance-of-mcdonalds-fr.png)  
+### Graph Generated / Hypothesis Correct?   
 
 Crime is clearly higher within a mile of a McDonalds, but there is a MackShack within a mile of almost anywhere in Londonium. The correlation is weak due to many outliers, and in fact, when in the vicinity of store, that is under a mile, the crime rate is lower.  
+
+![graph](./assets/img/distance-of-mcdonalds-fr.png)   
 
 However, as plotting the crime incidents to a map reveals most areas of London have faced some form of anti-social crime, the prescence of two extremes is peculiar, even impossible. Some instances could be away from a store but 8 miles is unrealistic. I suggest that this is rather due to the two datasets (crime incidents, and store locations) having different boundaries.   
 
