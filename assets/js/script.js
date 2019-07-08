@@ -122,9 +122,9 @@ $( document ).ready(function() {
 
 	  	  var shortest_distance = 0;
 
-		  for(var j = 0; j < macky_stores.length; j++) {
+		  for(var k = 0; k < macky_stores.length; k++) {
 
-		  	var this_distance = getDistanceHaversine(data[i].location.latitude,data[i].location.longitude,macky_stores[j][0],macky_stores[j][1]);
+		  	var this_distance = getDistanceHaversine(data[i].location.latitude,data[i].location.longitude,macky_stores[k][0],macky_stores[k][1]);
 
 		  	$( ".result" ).append(
 			  	"<p>"
