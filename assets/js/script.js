@@ -21,7 +21,7 @@ function getDistanceHaversine(lat1,lon1,lat2,lon2) {
 
 	var d = R * c;
 
-	return d;
+	return d.toFixed(2);
 
 }
 
