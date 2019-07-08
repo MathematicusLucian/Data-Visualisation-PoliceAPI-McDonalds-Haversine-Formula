@@ -3,7 +3,12 @@
 
 $( document ).ready(function() {
 
-	var mymap = L.map('mapid').setView([51.5, -0.13], 10);
+	var left_lat = 51.4;
+	var right_lat = 51.6;
+	var left_long = -0.35;
+	var right_long = 0.15;
+
+	var mymap = L.map('mapid').setView([(left_lat+right_lat)/2, (left_long+right_long)/2], 11);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token='+mapbox_access_token, {
 	    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -12,9 +17,32 @@ $( document ).ready(function() {
 	    accessToken: mapbox_access_token
 	}).addTo(mymap);
 
+	var polygon = L.polygon([
+	    [left_lat, left_long ],
+	    [left_lat, right_long],
+	    [right_lat, right_long],
+	    [right_lat, left_long ]
+	]).addTo(mymap);
+
 	$( ".result" ).html( "Let's get some data!" );
 
-	$.get( "https://data.police.uk/api/crimes-street/anti-social-behaviour?poly=51.275,0.35:51.6,-0.35:51.275,-0.35:51.6,0.35&date=2017-01", 
+	$.get( "https://data.police.uk/api/crimes-street/anti-social-behaviour?poly="
+		+ left_lat
+		+ "," 
+		+ right_long
+		+ ":"
+		+ right_lat
+		+ "," 
+		+ left_long 
+		+" :"
+		+ left_lat
+		+ ","
+		+ left_long 
+		+ ":"
+		+ right_lat
+		+ ","
+		+ right_long
+		+ "&date=2017-01", 
 	function( data ){
 
 	  console.log( "Load was performed." );
