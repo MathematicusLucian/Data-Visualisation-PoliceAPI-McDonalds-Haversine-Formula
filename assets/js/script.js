@@ -3,6 +3,8 @@
 
 $( document ).ready(function() {
 
+	var mymap = L.map('mapid').setView([51.275, 0.35], 13);
+
 	$( ".result" ).html( "Let's get some data!" );
 
 	$.get( "https://data.police.uk/api/crimes-street/anti-social-behaviour?poly=51.275,0.35:51.6,-0.35:51.275,-0.35:51.6,0.35&date=2017-01", 
