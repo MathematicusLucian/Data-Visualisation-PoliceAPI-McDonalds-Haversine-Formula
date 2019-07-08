@@ -132,7 +132,7 @@ $( document ).ready(function() {
 	    		+ "</p>"
 			  ); 
 
-		  	if((i == 0)||(this_distance < shortest_distance)){
+		  	if((k == 0)||(this_distance < shortest_distance)){
 		  		shortest_distance = this_distance;
 		  	}
 
