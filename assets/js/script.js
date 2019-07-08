@@ -151,15 +151,17 @@ $( document ).ready(function() {
     		+ "</p><hr>"
 		  ); 
 
-		  graphData[i] = [i ,shortest_distance];
+		  graphData[i] = [parseFloat(i),parseFloat(shortest_distance)];
 
-		  console.log(shortest_distance);
+		  //console.log(shortest_distance);
 		  //console.log(" ");
 
     	  j = i; 
 	  });  
 
 	  console.log("Count: " +j)
+
+	  console.log(graphData);
 
 	  Highcharts.chart('container', {
 		  chart: {
