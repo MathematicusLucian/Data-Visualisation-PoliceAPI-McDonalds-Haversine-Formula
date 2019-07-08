@@ -1,6 +1,10 @@
 # McYobbo
 Using Police API and McDonald's store location data, to see if level of anti-social "yobbo" crime is higher in the vicinity of a MackyD venue
 
+### Graph Generated  
+Crime is clearly higher within the vicinity of a McDonalds, but correlation is weak due to many outliers. Plotting the crime incidents to a map reveals most areas of London have faced some form of anti-social crime, and therefore, some instances could be away from a store. However, the prescence of two extremes is peculiar.  
+![graph](./assets/img/distance-of-mcdonalds-fr.png) 
+
 ### Haversine formula   
 To calculate distance between crime locations and McDonalds' stores. I calculate the great-circle distance between two points – that is, the shortest distance over the earth’s surface – giving an ‘as-the-crow-flies’ distance between the points (ignoring any hills they fly over).
 
@@ -9,6 +13,9 @@ Polygon set for the crime data request to Police API: that is South London, i.e.
 <code>
 $.get( "https://data.police.uk/api/crimes-street/anti-social-behaviour?poly=" + bottom_lat + "," + left_long + ":" + bottom_lat + "," + right_long +":" + top_lat + "," + right_long + ":" + top_lat + "," + left_long + "&date=2017-01", .........
 </code>
+
+#### Police Data
+![preview](./assets/img/output.png)  
 
 ### Extracting McDonalds' store data
 From this url https://www.mcdonalds.com/gb/en-gb/restaurant-locator.html, I extracted details of all stores within 5 miles of Peckham, which falls within the centre of the polygon I set for the crime data request.  
@@ -93,10 +100,7 @@ Which have the latitudes and longitudes of:
 51.51435,-0.10784  
 51.50642,-0.12689  
 51.50877,-0.12445  
-51.49645,-0.14107  
-
-### Output  
-![preview](./assets/img/output.png)  
+51.49645,-0.14107   
 
 ### ASBO map   
 ![preview](./assets/img/mapasbo.png)   
