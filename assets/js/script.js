@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
 	$( ".result" ).html( "Let's get some data!" );
 
-	$.get( "https://data.police.uk/api/crimes-street/anti-social-behaviour?poly=52.268,0.543:52.794,0.238:52.130,0.478&date=2017-01", 
+	$.get( "https://data.police.uk/api/crimes-street/anti-social-behaviour?poly=51.275,0.35:51.6,-0.35:51.275,-0.35:51.6,0.35&date=2017-01", 
 	function( data ){
 
 	  console.log( "Load was performed." );
@@ -20,12 +20,15 @@ $( document ).ready(function() {
 		  ); 
 	  });
 
+	  var j = 0;
 	  $.each(data, function(i, item) {
     	console.log( "id: " + data[i].id 
     		+ ", latitude: " + data[i].location.latitude
     		+ ", longitude: " + data[i].location.longitude
     		);
+    	j = i;
 	  });
+	  console.log("Count: " +j)
 	
 	})
     .fail(function(xhr, textStatus, errorThrown) {
