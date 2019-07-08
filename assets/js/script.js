@@ -106,16 +106,31 @@ $( document ).ready(function() {
 	  $.each(data, function(i, item) {
 	  	  //var marker = L.marker([data[i].location.latitude, data[i].location.longitude]).addTo(mymap);
 
-		  /* console.log( "id: " + data[i].id 
+		  $( ".result" ).append(
+		  	"<p>id: " + data[i].id  
+    		+ "</p>"
+    		+ "<p>"
+    		+ "latitude: " + data[i].location.latitude
+    		+ ", longitude: " + data[i].location.longitude 
+    		+ "</p>"
+		  ); 
+
+		  console.log( "id: " + data[i].id 
     		+ ", latitude: " + data[i].location.latitude
     		+ ", longitude: " + data[i].location.longitude
-    		); */
+    	  ); 
 
 	  	  var shortest_distance = 0;
 
-		  for(var i = 0; i < macky_stores.length; i++) {
+		  for(var j = 0; j < macky_stores.length; j++) {
 
-		  	var this_distance = getDistanceHaversine(data[i].location.latitude,data[i].location.longitude,macky_stores[i][0],macky_stores[i][1]);
+		  	var this_distance = getDistanceHaversine(data[i].location.latitude,data[i].location.longitude,macky_stores[j][0],macky_stores[j][1]);
+
+		  	$( ".result" ).append(
+			  	"<p>"
+	    		+ i + ": " + this_distance + "m"
+	    		+ "</p>"
+			  ); 
 
 		  	if((i == 0)||(this_distance < shortest_distance)){
 		  		shortest_distance = this_distance;
@@ -124,16 +139,13 @@ $( document ).ready(function() {
 		  }
 
 		  $( ".result" ).append(
-		  	"<p>id: " + data[i].id  
-	    		+ "</p>"
-	    		+ "<p>"
-	    		+ "latitude: " + data[i].location.latitude
-	    		+ ", longitude: " + data[i].location.longitude 
-	    		+ "</p>"
-	    		+ "<p>"
-	    		+ "McDonalds: " + shortest_distance + "m"
-	    		+ "</p><hr>"
+		  	"<p>"
+    		+ "McDonalds: " + shortest_distance + "m"
+    		+ "</p><hr>"
 		  ); 
+
+		  console.log(shortest_distance);
+		  console.log(" ");
 
     	  j = i; 
 	  });  
