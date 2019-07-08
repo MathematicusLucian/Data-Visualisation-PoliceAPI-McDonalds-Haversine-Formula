@@ -62,9 +62,9 @@ $( document ).ready(function() {
 	    		+ ", longitude: " + data[i].location.longitude 
 	    		+ "</p>"
 		  ); 
-    	  j = i;
-	  });  
-
+    	  j = i; 
+	  }); 
+	   
 	  /*$.each(data, function(i, item) {
     	console.log( "id: " + data[i].id 
     		+ ", latitude: " + data[i].location.latitude
