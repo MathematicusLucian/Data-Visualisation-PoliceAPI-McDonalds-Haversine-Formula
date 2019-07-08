@@ -135,7 +135,7 @@ $( document ).ready(function() {
 
 		  	$( ".result" ).append(
 			  	"<p>"
-	    		+ k + ": " + this_distance + "m"
+	    		+ k + ": " + this_distance + "metres"
 	    		+ "</p>"
 			  ); 
 
@@ -147,14 +147,14 @@ $( document ).ready(function() {
 
 		  $( ".result" ).append(
 		  	"<p>"
-    		+ "McDonalds: " + shortest_distance + "m"
+    		+ "McDonalds: " + shortest_distance + "metres"
     		+ "</p><hr>"
 		  ); 
 
-		  graphData[i] = [parseFloat(i),parseFloat(shortest_distance)];
+		  graphData[i] = [parseFloat(i),(parseFloat(shortest_distance)*0.00062137119223733)];
 
 		  //console.log(shortest_distance);
-		  //console.log(" ");
+		  //console.log(" ");k
 
     	  j = i; 
 	  });  
@@ -185,7 +185,7 @@ $( document ).ready(function() {
 		  },
 		  yAxis: {
 		    title: {
-		      text: 'Distance to Nearest McDonalds (m)'
+		      text: 'Distance to Nearest McDonalds (miles)'
 		    }
 		  },
 		  legend: {
@@ -218,7 +218,7 @@ $( document ).ready(function() {
 		      },
 		      tooltip: {
 		        headerFormat: '<b>{series.name}</b><br>',
-		        pointFormat: '{point.x} id, {point.y} m'
+		        pointFormat: '{point.x} id, {point.y} miles'
 		      }
 		    }
 		  },
