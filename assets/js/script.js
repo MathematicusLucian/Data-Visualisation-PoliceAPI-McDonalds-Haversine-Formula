@@ -28,26 +28,7 @@ $( document ).ready(function() {
 	    fillOpacity: 0.1
 	}).addTo(mymap);
 
-	$( ".result" ).html( "Let's get some data!" );
-
-	//https://data.police.uk/api/crimes-street/anti-social-behaviour?poly=51.275,0.35:51.6,-0.35:51.275,-0.35:51.6,0.35&date=2017-01
-	/* console.log("https://data.police.uk/api/crimes-street/anti-social-behaviour?poly="
-		+ left_lat
-		+ "," 
-		+ left_long
-		+ ":"
-		+ left_lat
-		+ "," 
-		+ right_long 
-		+":"
-		+ right_lat
-		+ ","
-		+ right_long 
-		+ ":"
-		+ right_lat
-		+ ","
-		+ left_long
-		+ "&date=2017-01"); */
+	$( ".result" ).html( "Let's get some data!" ); 
 
 	$.get( "https://data.police.uk/api/crimes-street/anti-social-behaviour?poly="
 		+ bottom_lat
@@ -61,10 +42,10 @@ $( document ).ready(function() {
 		+ top_lat
 		+ ","
 		+ right_long 
-		//+ ":"
-		//+ top_lat
-		//+ ","
-		//+ left_long
+		+ ":"
+		+ top_lat
+		+ ","
+		+ left_long
 		+ "&date=2017-01", 
 	function( data ){
 
@@ -72,7 +53,7 @@ $( document ).ready(function() {
 
 	  $( ".result" ).html("");
 	  $.each(data, function(i, item) {
-	  	  //var marker = L.marker([data[i].location.latitude, data[i].location.longitude]).addTo(mymap);
+	  	  var marker = L.marker([data[i].location.latitude, data[i].location.longitude]).addTo(mymap);
 
 		  $( ".result" ).append(
 		  	"<p>id: " + data[i].id 
