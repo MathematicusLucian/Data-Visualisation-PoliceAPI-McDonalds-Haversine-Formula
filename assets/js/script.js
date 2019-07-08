@@ -10,11 +10,22 @@ $( document ).ready(function() {
 
 	  console.log( "Load was performed." );
 
-	  $( ".result" ).html("").append(
-	  	data
-	  ); 
+	  $( ".result" ).html("");
+	  $.each(data, function(i, item) {
+		  $( ".result" ).append(
+		  	"<p>id: " + data[i].id 
+	    		+ ", latitude: " + data[i].location.latitude
+	    		+ ", longitude: " + data[i].location.longitude 
+	    		+ "</p>"
+		  ); 
+	  });
 
-	  console.log( data ); 
+	  $.each(data, function(i, item) {
+    	console.log( "id: " + data[i].id 
+    		+ ", latitude: " + data[i].location.latitude
+    		+ ", longitude: " + data[i].location.longitude
+    		);
+	  });
 	
 	})
     .fail(function(xhr, textStatus, errorThrown) {
