@@ -21,8 +21,12 @@ $( document ).ready(function() {
 	    [left_lat, left_long ],
 	    [left_lat, right_long],
 	    [right_lat, right_long],
-	    [right_lat, left_long ]
-	]).addTo(mymap);
+	    [right_lat, left_long]
+	], {
+	    color: 'red',
+	    fillColor: '#f03',
+	    fillOpacity: 0.1
+	}).addTo(mymap);
 
 	$( ".result" ).html( "Let's get some data!" );
 
