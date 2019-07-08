@@ -139,7 +139,7 @@ $( document ).ready(function() {
 	    		+ "</p>"
 			  ); 
 
-		  	if((k == 0)||(this_distance < shortest_distance)){
+		  	if(((parseFloat(this_distance)*0.00062137119223733) < 5)&&((k == 0)||(this_distance < shortest_distance))){
 		  		shortest_distance = this_distance;
 		  	}
 
@@ -223,7 +223,7 @@ $( document ).ready(function() {
 		    }
 		  },
 		  series: [{
-		    name: 'k1n4ku4 data analysis',
+		    name: 'k1n4kut4 data analysis',
 		    color: 'rgba(223, 83, 83, .5)',
 		    data: graphData
 		  }]

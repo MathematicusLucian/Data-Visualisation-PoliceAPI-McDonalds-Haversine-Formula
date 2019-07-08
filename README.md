@@ -3,20 +3,9 @@ Accessing the Police API and McDonald's store location data, to use the Haversin
 
 ### Graph Generated / Hypothesis Correct?   
 
-Nearly 2,000 crime incidents reviewed, for distance to the nearest McDonalds store. Plotted to graph.
+Nearly 2,000 crime incidents reviewed, for distance to the nearest McDonalds store. Plotted to graph. As the data for stores was all within 5 miles of Peckham, I have ignored any crime occuring over 5 miles from a store, because such clearly requires a larger store dataset (and more processing time.)
 
-Crime is clearly higher when within 2 miles of a McDonalds, but there is a MackShack within approx said distance almost anywhere in Londonium. The correlation is weak due to many outliers, and in fact, when in the vicinity of store, that is under a mile, the crime rate is lower.  
-
-![graph](./assets/img/distance-of-mcdonalds-fr.png)   
-
-However, as plotting the crime incidents to a map reveals most areas of London have faced some form of anti-social crime, the prescence of two extremes is peculiar, even impossible. Some instances could be away from a store but 8 miles is unrealistic. I suggest that this is rather due to the two datasets (crime incidents, and store locations) having different boundaries.   
-
-![graph](./assets/img/markers.png)  
-![graph](./assets/img/markers2.png)  
-
-While the police data is retuned based on a rectangular polygon, the McDonalds' store details are simply an extraction of all stores within 5 miles of Peckham. Thus for incidents with the stores at distance 8 miles of higher, there probably is a local McDonalds.   
-
-Would consider extracting data of all stores within 10 miles of Peckham.   
+![graph](./assets/img/distance-of-mcdonalds-fr2.png)   
 
 ### Haversine formula   
 To calculate distance between crime locations and McDonalds' stores. I calculate the great-circle distance between two points – that is, the shortest distance over the earth’s surface – giving an ‘as-the-crow-flies’ distance between the points (ignoring any hills they fly over).
@@ -117,3 +106,18 @@ Which have the latitudes and longitudes of:
 51.50642,-0.12689  
 51.50877,-0.12445  
 51.49645,-0.14107    
+
+### Earlier results 
+
+Crime is clearly higher when within 2 miles of a McDonalds, but there is a MackShack within approx said distance almost anywhere in Londonium. The correlation is weak due to many outliers, and in fact, when in the vicinity of store, that is under a mile, the crime rate is lower.  
+
+![graph](./assets/img/distance-of-mcdonalds-fr.png)   
+
+However, as plotting the crime incidents to a map reveals most areas of London have faced some form of anti-social crime, the prescence of two extremes is peculiar, even impossible. Some instances could be away from a store but 8 miles is unrealistic. I suggest that this is rather due to the two datasets (crime incidents, and store locations) having different boundaries.   
+
+![graph](./assets/img/markers.png)  
+![graph](./assets/img/markers2.png)  
+
+While the police data is retuned based on a rectangular polygon, the McDonalds' store details are simply an extraction of all stores within 5 miles of Peckham. Thus for incidents with the stores at distance 8 miles of higher, there probably is a local McDonalds.   
+
+Would consider extracting data of all stores within 10 miles of Peckham.   
