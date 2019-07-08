@@ -14,6 +14,9 @@ Polygon set for the crime data request to Police API: that is South London, i.e.
 $.get( "https://data.police.uk/api/crimes-street/anti-social-behaviour?poly=" + bottom_lat + "," + left_long + ":" + bottom_lat + "," + right_long +":" + top_lat + "," + right_long + ":" + top_lat + "," + left_long + "&date=2017-01", .........
 </code>
 
+### Polygon for crime data request  
+![preview](./assets/img/mapasbo.png)  
+
 #### Police Data
 ![preview](./assets/img/output.png)  
 
@@ -100,7 +103,4 @@ Which have the latitudes and longitudes of:
 51.51435,-0.10784  
 51.50642,-0.12689  
 51.50877,-0.12445  
-51.49645,-0.14107   
-
-### ASBO map   
-![preview](./assets/img/mapasbo.png)   
+51.49645,-0.14107    

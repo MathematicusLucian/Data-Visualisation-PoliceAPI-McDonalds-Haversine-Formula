@@ -109,7 +109,7 @@ $( document ).ready(function() {
 	  var graphData = [];
 
 	  $.each(data, function(i, item) {
-	  	  //var marker = L.marker([data[i].location.latitude, data[i].location.longitude]).addTo(mymap);
+	  	  var marker = L.marker([data[i].location.latitude, data[i].location.longitude]).addTo(mymap);
 
 		  $( "#count_current" ).html( i );
 
