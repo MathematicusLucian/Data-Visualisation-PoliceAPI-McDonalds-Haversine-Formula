@@ -52,8 +52,9 @@ $( document ).ready(function() {
 	  console.log( "Load was performed." );
 
 	  $( ".result" ).html("");
+	  var j = 0;
 	  $.each(data, function(i, item) {
-	  	  var marker = L.marker([data[i].location.latitude, data[i].location.longitude]).addTo(mymap);
+	  	  //var marker = L.marker([data[i].location.latitude, data[i].location.longitude]).addTo(mymap);
 
 		  $( ".result" ).append(
 		  	"<p>id: " + data[i].id 
@@ -61,16 +62,15 @@ $( document ).ready(function() {
 	    		+ ", longitude: " + data[i].location.longitude 
 	    		+ "</p>"
 		  ); 
-	  });
+    	  j = i;
+	  });  
 
-	  var j = 0;
-	  $.each(data, function(i, item) {
+	  /*$.each(data, function(i, item) {
     	console.log( "id: " + data[i].id 
     		+ ", latitude: " + data[i].location.latitude
     		+ ", longitude: " + data[i].location.longitude
-    		);
-    	j = i;
-	  });
+    		); 
+	  });*/
 	  console.log("Count: " +j)
 	
 	})
