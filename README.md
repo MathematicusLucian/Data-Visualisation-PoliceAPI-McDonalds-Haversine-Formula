@@ -1,14 +1,20 @@
 # McYobbo
 Accessing the Police API and McDonald's store location data, to use the Haversine formula, to see if level of anti-social "yobbo" crime is higher in the vicinity of a MackyD venue
 
-### Graph Generated  
+### Graph Generated / Hypothesis Correct?  
 
-![graph](./assets/img/distance-of-mcdonalds-fr.png) 
+![graph](./assets/img/distance-of-mcdonalds-fr.png)  
 
-Crime is clearly higher within the vicinity of a McDonalds, but correlation is weak due to many outliers. Plotting the crime incidents to a map reveals most areas of London have faced some form of anti-social crime, and therefore, some instances could be away from a store. However, the prescence of two extremes is peculiar.   
+Crime is clearly higher within the vicinity of a McDonalds, but correlation is weak due to many outliers.  
+
+However, as plotting the crime incidents to a map reveals most areas of London have faced some form of anti-social crime, the prescence of two extremes is peculiar, even impossible. Some instances could be away from a store but 8 miles is unrealistic. I suggest that this is rather due to the two datasets (crime incidents, and store locations) having different boundaries.   
 
 ![graph](./assets/img/markers.png)  
 ![graph](./assets/img/markers2.png)  
+
+While the police data is retuned based on a rectangular polygon, the McDonalds' store details are simply an extraction of all stores within 5 miles of Peckham. Thus for incidents with the stores at distance 8 miles of higher, there probably is a local McDonalds.   
+
+Would consider extracting data of all stores within 10 miles of Peckham.   
 
 ### Haversine formula   
 To calculate distance between crime locations and McDonalds' stores. I calculate the great-circle distance between two points – that is, the shortest distance over the earth’s surface – giving an ‘as-the-crow-flies’ distance between the points (ignoring any hills they fly over).
